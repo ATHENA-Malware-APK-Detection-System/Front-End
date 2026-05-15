@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_pink"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="24dp"
+        android:paddingTop="60dp"
+        android:paddingBottom="40dp">
+
+        <!-- App Logo -->
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:contentDescription="@string/logo"
+            android:src="@drawable/logo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- App Name -->
+        <TextView
+            android:id="@+id/tvAppName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="24sp"
+            android:fontFamily="@font/inter_bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Subtitle -->
+        <TextView
+            android:id="@+id/tvSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_desc"
+            android:textSize="14sp"
+            android:fontFamily="@font/inter_light"
+            android:textColor="@color/black"
+            android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@id/tvAppName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Upload Drop Zone Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/uploadDropZone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/white"
+            app:strokeColor="@color/light_pink"
+            app:strokeWidth="2dp"
+            app:layout_constraintTop_toBottomOf="@id/tvSubtitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Dashed border overlay -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fragment_border"
+                android:paddingVertical="36dp"
+                android:paddingHorizontal="24dp">
+
+                <!-- IDLE STATE GROUP -->
+                <LinearLayout
+                    android:id="@+id/groupIdle"
+                    android:layout_width="0dp"
+                    android:layout_height="350dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:visibility="visible"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <!-- Upload cloud icon circle -->
+                    <ImageView
+                        android:id="@+id/upload"
+                        android:layout_width="180dp"
+                        android:layout_height="180dp"
+                        android:contentDescription="@string/logo"
+                        android:src="@drawable/idle" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/inter_bold"
+                        android:text="@string/upload"
+                        android:textColor="@color/black"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/inter_light"
+                        android:text="@string/upload_desc"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <!-- Choose File Button -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnChooseFile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/upload_btn"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/inter_semibold"
+                        android:textColor="@color/white"
+                        app:backgroundTint="@color/dark_pink"
+                        app:cornerRadius="8dp"
+                        app:elevation="8dp"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="15dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="15dp" />
+
+                </LinearLayout>
+
+                <!-- UPLOADING STATE GROUP -->
+                <LinearLayout
+                    android:id="@+id/groupUploading"
+                    android:layout_width="0dp"
+                    android:layout_height="350dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <ImageView
+                        android:layout_width="180dp"
+                        android:layout_height="180dp"
+                        android:src="@drawable/upload" />
+
+                    <TextView
+                        android:id="@+id/tvUploadingFileName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="app.apk"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/inter_semibold"
+                        android:textColor="@color/black"
+                        android:ellipsize="middle"
+                        android:singleLine="true"
+                        android:maxWidth="220dp"
+                        android:layout_marginTop="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Uploading..."
+                        android:textSize="14sp"
+                        android:fontFamily="@font/inter_light"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="4dp" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBarUpload"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp"
+                        android:layout_marginTop="20dp"
+                        android:max="100"
+                        android:progress="0"
+                        android:elevation="8dp"
+                        android:progressTint="@color/dark_pink"
+                        android:progressBackgroundTint="@color/light_pink" />
+
+                    <TextView
+                        android:id="@+id/tvUploadProgress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0%"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/inter_semibold"
+                        android:textColor="@color/dark_pink"
+                        android:layout_marginTop="8dp" />
+
+                </LinearLayout>
+
+                <!-- SCANNING STATE GROUP -->
+                <LinearLayout
+                    android:id="@+id/groupScanning"
+                    android:layout_width="0dp"
+                    android:layout_height="350dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <!-- Pulsing scanning circle -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/scanningCircle"
+                        android:layout_width="180dp"
+                        android:layout_height="180dp"
+                        android:layout_gravity="center"
+                        app:cardCornerRadius="100dp"
+                        app:cardElevation="4dp"
+                        app:cardBackgroundColor="@color/light_pink">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/scan" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/tvScanningFileName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="app.apk"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/inter_semibold"
+                        android:textColor="@color/black"
+                        android:ellipsize="middle"
+                        android:singleLine="true"
+                        android:maxWidth="220dp"
+                        android:layout_marginTop="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/scan"
+                        android:textSize="24sp"
+                        android:fontFamily="@font/inter_bold"
+                        android:textColor="@color/black80"
+                        android:layout_marginTop="16dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Analyzing file for malware patterns"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/inter_light"
+                        android:textColor="@color/black"
+                        android:gravity="center"
+                        android:layout_marginTop="4dp" />
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+<!--        &lt;!&ndash; Choose File Button &ndash;&gt;-->
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/btnChooseFile"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:text="@string/upload_btn"-->
+<!--            android:textSize="18sp"-->
+<!--            android:fontFamily="@font/inter_semibold"-->
+<!--            android:textColor="@color/white"-->
+<!--            app:backgroundTint="@color/dark_pink"-->
+<!--            app:cornerRadius="8dp"-->
+<!--            app:elevation="8dp"-->
+<!--            android:paddingLeft="25dp"-->
+<!--            android:paddingTop="15dp"-->
+<!--            android:paddingRight="25dp"-->
+<!--            android:paddingBottom="15dp"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/uploadDropZone"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent" />-->
+
+        <!-- Supported Formats -->
+        <TextView
+            android:id="@+id/tvSupportedLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/supp"
+            android:textSize="14sp"
+            android:fontFamily="@font/inter_light"
+            android:textColor="@color/black80"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@id/uploadDropZone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/layoutFormats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/tvSupportedLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_light"
+                android:background="@drawable/form_border"
+                android:elevation="4dp"
+                android:text="@string/form"
+                android:textAlignment="center"
+                android:textColor="@color/black80"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

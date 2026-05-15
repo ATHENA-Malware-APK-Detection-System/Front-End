@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/uploadFragment">
+
+    <fragment
+        android:id="@+id/uploadFragment"
+        android:name="com.athena.skripsi.UploadFragment"
+        android:label="Upload"
+        tools:layout="@layout/fragment_upload">
+
+        <action
+            android:id="@+id/action_uploadFragment_to_resultFragment"
+            app:destination="@id/resultFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.athena.skripsi.ResultFragment"
+        android:label="Result"
+        tools:layout="@layout/fragment_result">
+
+        <argument
+            android:name="isMalware"
+            app:argType="boolean"
+            android:defaultValue="false" />
+
+        <argument
+            android:name="fileName"
+            app:argType="string"
+            android:defaultValue="unknown.apk" />
+
+        <argument
+            android:name="fileSize"
+            app:argType="string"
+            android:defaultValue="0 KB" />
+
+        <argument
+            android:name="scanDuration"
+            app:argType="string"
+            android:defaultValue="0s" />
+
+        <argument
+            android:name="confidence"
+            app:argType="string"
+            android:defaultValue="0%" />
+
+        <action
+            android:id="@+id/action_resultFragment_to_uploadFragment"
+            app:destination="@id/uploadFragment"
+            app:popUpTo="@id/uploadFragment"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+</navigation>

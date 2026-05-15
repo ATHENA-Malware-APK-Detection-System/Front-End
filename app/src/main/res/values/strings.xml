@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">ATHENA</string>
+    <string name="app_desc">Intelligent Vision for Malware Detection</string>
+    <string name="logo">logo</string>
+    <string name="supp">Supported format:</string>
+    <string name="form">.APK</string>
+    <string name="upload">Upload File</string>
+    <string name="upload_desc">Tap to browse or drag and drop file here</string>
+    <string name="upload_btn">Choose File</string>
+    <string name="scan">Scanning...</string>
+    <string name="result">Result</string>
+    <string name="backbtn">Back Button</string>
+    <string name="benign">File is Safe</string>
+    <string name="malware">Back Button</string>
+    <string name="scan_btn">Scan Another File</string>
+    <string name="title_activity_main">ATHENA</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_loading">LoadingActivity</string>
+    <string name="title_activity_result">ResultActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
